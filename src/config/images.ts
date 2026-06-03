@@ -6,12 +6,12 @@ export const images = {
   projectsBanner: "/images/sections/atisam-projects-banner.png",
 } as const;
 
-export const serviceImages: Record<string, string> = {
+export const serviceImages = {
   fullstack: "/images/services/atisam-service-fullstack.png",
   frontend: "/images/services/atisam-service-frontend.png",
   backend: "/images/services/atisam-service-backend.png",
   ecommerce: "/images/services/atisam-service-ecommerce.png",
-};
+} as const;
 
 export const projectImages: Record<string, string> = {
   agentflo:

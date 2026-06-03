@@ -11,9 +11,8 @@ export function FadeIn({
   children,
   className,
   delay = 0,
-  y = 16,
   ...props
-}: HTMLMotionProps<"div"> & { delay?: number; y?: number }) {
+}: HTMLMotionProps<"div"> & { delay?: number }) {
   return (
     <motion.div
       initial={false}

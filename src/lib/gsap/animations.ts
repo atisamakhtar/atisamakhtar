@@ -39,7 +39,7 @@ export function createHeroTimeline(
 export function animateCardsOnScroll(
   selector: string,
   reducedMotion: boolean,
-): ScrollTrigger | null {
+): ScrollTrigger[] | null {
   if (reducedMotion || typeof window === "undefined") return null;
 
   const elements = document.querySelectorAll(selector);
