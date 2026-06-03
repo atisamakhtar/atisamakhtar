@@ -1,0 +1,24 @@
+import { siteConfig } from "./site";
+
+export const mainNav = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/projects" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+export const footerNav = {
+  explore: [
+    { label: "Portfolio", href: "/projects" },
+    { label: "Blog", href: "/blog" },
+    { label: "About", href: "/#about" },
+  ],
+  connect: [
+    { label: "Contact", href: "/contact" },
+    { label: "GitHub", href: siteConfig.social.github, external: true },
+    { label: "LinkedIn", href: siteConfig.social.linkedin, external: true },
+    { label: "WhatsApp", href: siteConfig.social.whatsapp, external: true },
+  ],
+} as const;

@@ -1,0 +1,94 @@
+@import "./tokens.css";
+@import "./animations.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  [id] {
+    scroll-margin-top: var(--header-total);
+  }
+
+  body {
+    @apply font-body antialiased;
+    background: var(--color-bg-light);
+    color: var(--color-text-dark);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  ::selection {
+    background: var(--color-accent-muted);
+    color: var(--color-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto w-full max-w-[var(--container-max)] px-5 sm:px-8;
+  }
+
+  .section-dark {
+    @apply bg-bg-dark text-white;
+  }
+
+  .section-light {
+    @apply bg-bg-light text-text-dark;
+  }
+
+  .section-padding {
+    padding-block: var(--section-padding);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-accent-soft bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-[var(--radius-pill)] bg-accent px-8 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-accent-hover hover:shadow-glow;
+  }
+
+  .heading-accent {
+    @apply text-center font-display text-3xl font-bold text-accent md:text-4xl;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

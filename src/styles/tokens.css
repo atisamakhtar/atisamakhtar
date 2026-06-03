@@ -1,0 +1,44 @@
+:root {
+  /* Dribbble-inspired palette — charcoal + magenta */
+  --color-bg-dark: #111111;
+  --color-bg-primary: #111111;
+  --color-bg-secondary: #1a1a1a;
+  --color-bg-light: #ffffff;
+  --color-surface: rgba(255, 255, 255, 0.06);
+
+  --color-accent: #ff2d55;
+  --color-accent-hover: #ff4d6d;
+  --color-accent-muted: rgba(255, 45, 85, 0.15);
+  --color-accent-soft: #ff6b8a;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.75);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-text-dark: #2d2d2d;
+  --color-text-dark-muted: #666666;
+
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-light: #eeeeee;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --radius-pill: 50px;
+
+  --shadow-glow: 0 0 60px rgba(255, 45, 85, 0.35);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+  --transition-fast: 150ms;
+  --transition-base: 300ms;
+  --transition-slow: 600ms;
+
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --topbar-height: 40px;
+  --nav-height: 72px;
+  --header-total: calc(var(--topbar-height) + var(--nav-height));
+  --container-max: 1200px;
+  --section-padding: clamp(4rem, 8vw, 7rem);
+}
