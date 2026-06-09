@@ -1,15 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence } from "framer-motion";
 import { portfolioProjects } from "@/data/projects";
 import { getPortfolioCategories } from "@/data/portfolio-categories";
 import type { PortfolioCategoryId, PortfolioProject } from "@/types/portfolio";
 import { PortfolioTabs } from "./PortfolioTabs";
 import { ProjectCard } from "./ProjectCard";
-import { PortfolioModal } from "./PortfolioModal";
 import { cn } from "@/lib/utils";
+
+const PortfolioModal = dynamic(
+  () => import("./PortfolioModal").then((m) => m.PortfolioModal),
+  { ssr: false },
+);
 
 interface PortfolioShowcaseProps {
   id?: string;
@@ -105,16 +109,14 @@ export function PortfolioShowcase({
               featuredOnly ? "mt-14" : "mt-12",
             )}
           >
-            <AnimatePresence mode="popLayout">
-              {filtered.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onPreview={openPreview}
-                  priority={index < 3}
-                />
-              ))}
-            </AnimatePresence>
+            {filtered.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onPreview={openPreview}
+                priority={index < 3}
+              />
+            ))}
           </div>
 
           {showViewAllLink && (

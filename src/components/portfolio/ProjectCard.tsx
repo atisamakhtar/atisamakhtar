@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import type { PortfolioProject } from "@/types/portfolio";
 import { getCategoryLabel } from "@/data/portfolio-categories";
 import { cn } from "@/lib/utils";
@@ -14,14 +13,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onPreview, priority = false }: ProjectCardProps) {
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-2xl bg-[#111]"
-    >
+    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#161616] shadow-card">
       <button
         type="button"
         onClick={() => onPreview(project)}
@@ -65,6 +57,6 @@ export function ProjectCard({ project, onPreview, priority = false }: ProjectCar
           </div>
         </div>
       </button>
-    </motion.article>
+    </article>
   );
 }

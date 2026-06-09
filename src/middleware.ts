@@ -9,11 +9,10 @@ export function middleware(request: NextRequest) {
   // Strict CSP breaks Next.js dev (React Refresh uses eval) and client hydration.
   // Apply full CSP in production only.
   if (!isDev) {
-    const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-
     const csp = [
       "default-src 'self'",
-      `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+      // Next.js hydration requires inline + same-origin chunks; nonce is not wired in layout.
+      "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data: https://fonts.gstatic.com",
@@ -27,7 +26,6 @@ export function middleware(request: NextRequest) {
     ].join("; ");
 
     response.headers.set("Content-Security-Policy", csp);
-    response.headers.set("x-nonce", nonce);
   }
 
   response.headers.set("X-Content-Type-Options", "nosniff");
