@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:       #141210;
+  --ink-soft:  #5A5650;
+  --ink-faint: #A09890;
+  --cream:     #F7F4EF;
+  --paper:     #FDFCFA;
+  --rule:      rgba(20,18,16,0.1);
+  --accent:    #C4693A;
+  --accent-2:  #4A6FA5;
+}
+
+html{font-size:16px;scroll-behavior:smooth}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── LAYOUT ─── */
+.exp{
+  max-width:1160px;
+  margin:0 auto;
+  padding:100px 48px 130px;
+}
+
+/* ─── HEADER ─── */
+.exp__header{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:end;
+  gap:32px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:80px;
+}
+.exp__label{
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:18px;
+}
+.exp__heading{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.8rem,5vw,4.2rem);
+  line-height:1;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+}
+.exp__heading em{
+  font-style:italic;
+  color:var(--accent);
+}
+.exp__intro{
+  font-size:15px;
+  line-height:1.75;
+  color:var(--ink-soft);
+  max-width:36ch;
+  align-self:end;
+}
+
+/* ─── SECTION DIVIDER ─── */
+.sec-label{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:48px;
+}
+.sec-label__text{
+  font-size:10.5px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  white-space:nowrap;
+}
+.sec-label__line{
+  flex:1;
+  height:1px;
+  background:var(--rule);
+}
+.sec-label__count{
+  font-family:'DM Serif Display',serif;
+  font-size:11px;
+  color:var(--ink-faint);
+}
+
+/* ─── WORK ROW ─── */
+.work-row{
+  display:grid;
+  grid-template-columns:clamp(130px,18%,200px) 1fr clamp(100px,14%,160px);
+  gap:0 48px;
+  padding:44px 0;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  transition:background 0.2s ease;
+}
+.work-row::before{
+  content:'';
+  position:absolute;
+  inset:0 -48px;
+  background:var(--cream);
+  opacity:0;
+  transition:opacity 0.25s ease;
+  pointer-events:none;
+  border-radius:4px;
+}
+.work-row:hover::before{opacity:1}
+.work-row>*{position:relative;z-index:1}
+.work-row:first-of-type{border-top:1px solid var(--rule)}
+
+/* Left col */
+.work-col-left{padding-top:4px}
+.work-index{
+  font-family:'DM Serif Display',serif;
+  font-size:11px;
+  color:var(--ink-faint);
+  margin-bottom:20px;
+  letter-spacing:0.06em;
+}
+.work-period{
+  font-size:12px;
+  color:var(--ink-faint);
+  line-height:1.6;
+  letter-spacing:0.01em;
+}
+.work-period strong{
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+
+/* Middle col */
+.work-col-mid{}
+.work-company{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.5rem,2.8vw,2.1rem);
+  line-height:1.1;
+  letter-spacing:-0.025em;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.work-role{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:20px;
+}
+.work-desc{
+  font-size:14px;
+  line-height:1.75;
+  color:var(--ink-soft);
+  max-width:56ch;
+  margin-bottom:24px;
+}
+.work-bullets{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.work-bullets li{
+  font-size:13px;
+  color:var(--ink-faint);
+  padding-left:14px;
+  position:relative;
+  line-height:1.55;
+}
+.work-bullets li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:9px;
+  width:4px;
+  height:1px;
+  background:var(--ink-faint);
+}
+
+/* Right col */
+.work-col-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+  padding-top:6px;
+}
+.work-tag{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.06em;
+  color:var(--ink-soft);
+  background:rgba(20,18,16,0.05);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:5px 10px;
+  white-space:nowrap;
+}
+.badge-live{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid rgba(196,105,58,0.3);
+  border-radius:3px;
+  padding:5px 10px;
+}
+.badge-live::before{
+  content:'';
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:blink 2.2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* ─── EDUCATION ─── */
+.edu-section{margin-top:80px}
+
+.edu-row{
+  display:grid;
+  grid-template-columns:clamp(130px,18%,200px) 1fr clamp(100px,14%,160px);
+  gap:0 48px;
+  padding:44px 0;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.edu-row::before{
+  content:'';
+  position:absolute;
+  inset:0 -48px;
+  background:var(--cream);
+  opacity:0;
+  transition:opacity 0.25s ease;
+  pointer-events:none;
+  border-radius:4px;
+}
+.edu-row:hover::before{opacity:1}
+.edu-row>*{position:relative;z-index:1}
+.edu-row:first-of-type{border-top:1px solid var(--rule)}
+
+.edu-col-left{padding-top:4px}
+.edu-index{
+  font-family:'DM Serif Display',serif;
+  font-size:11px;
+  color:var(--ink-faint);
+  margin-bottom:20px;
+  letter-spacing:0.06em;
+}
+.edu-period{
+  font-size:12px;
+  color:var(--ink-faint);
+  line-height:1.6;
+}
+.edu-period strong{
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+  margin-bottom:6px;
+}
+
+.edu-col-mid{}
+.edu-degree{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.edu-school{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:20px;
+}
+.edu-desc{
+  font-size:14px;
+  line-height:1.75;
+  color:var(--ink-soft);
+  max-width:56ch;
+  margin-bottom:24px;
+}
+.edu-bullets{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.edu-bullets li{
+  font-size:13px;
+  color:var(--ink-faint);
+  padding-left:14px;
+  position:relative;
+  line-height:1.55;
+}
+.edu-bullets li::before{
+  content:'';
+  position:absolute;
+  left:0;top:9px;
+  width:4px;height:1px;
+  background:var(--accent-2);
+  opacity:0.6;
+}
+
+.edu-col-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+  padding-top:6px;
+}
+.edu-tag{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.06em;
+  color:var(--accent-2);
+  background:rgba(74,111,165,0.07);
+  border:1px solid rgba(74,111,165,0.18);
+  border-radius:3px;
+  padding:5px 10px;
+  white-space:nowrap;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ─── FOOTER MARK ─── */
+.exp__foot{
+  margin-top:72px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.exp__foot-line{flex:1;height:1px;background:var(--rule)}
+.exp__foot-text{
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:860px){
+  .exp{padding:64px 28px 90px}
+  .exp__header{grid-template-columns:1fr}
+  .exp__intro{max-width:100%}
+  .work-row,.edu-row{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:36px 0;
+  }
+  .work-col-right,.edu-col-right{
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .work-row::before,.edu-row::before{inset:0 -28px}
+}
+@media(max-width:520px){
+  .exp{padding:48px 20px 72px}
+  .exp__heading{font-size:2.4rem}
+  .work-row::before,.edu-row::before{inset:0 -20px}
+}
+</style>
+</head>
+<body>
+
+<section class="exp">
+
+  <!-- HEADER -->
+  <header class="exp__header">
+    <div>
+      <p class="exp__label">Selected record</p>
+      <h1 class="exp__heading">Work &amp;<br><em>Education</em></h1>
+    </div>
+    <p class="exp__intro">Four years of building across agencies, startups, and freelance — from WordPress to full-stack TypeScript to AI-adjacent products.</p>
+  </header>
+
+  <!-- WORK -->
+  <div class="sec-label">
+    <span class="sec-label__text">Work history</span>
+    <span class="sec-label__line"></span>
+    <span class="sec-label__count">04</span>
+  </div>
+
+  <!-- 01 -->
+  <div class="work-row reveal">
+    <div class="work-col-left">
+      <p class="work-index">01 —</p>
+      <p class="work-period"><strong>Current</strong>Jul 2025 — Present</p>
+    </div>
+    <div class="work-col-mid">
+      <h2 class="work-company">Xeven Solutions</h2>
+      <p class="work-role">Website Developer</p>
+      <p class="work-desc">Building and maintaining client websites at a leading AI development &amp; solutions company in Lahore. Focus on performance-optimized UIs, React/Next.js, and WordPress delivery.</p>
+      <ul class="work-bullets">
+        <li>Delivered corporate sites including Baumeister Corp</li>
+        <li>React.js, Next.js, and Tailwind CSS for modern frontends</li>
+        <li>Collaborating with cross-functional teams on client projects</li>
+      </ul>
+    </div>
+    <div class="work-col-right">
+      <span class="badge-live">Live role</span>
+      <span class="work-tag">React.js</span>
+      <span class="work-tag">Next.js</span>
+      <span class="work-tag">Tailwind</span>
+      <span class="work-tag">WordPress</span>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="work-row reveal">
+    <div class="work-col-left">
+      <p class="work-index">02 —</p>
+      <p class="work-period"><strong>Previous</strong>Nov 2024 — Jul 2025</p>
+    </div>
+    <div class="work-col-mid">
+      <h2 class="work-company">Dappster</h2>
+      <p class="work-role">Full Stack Developer</p>
+      <p class="work-desc">Full stack development for an IT services consultancy. Built the company website and contributed to AI/blockchain-related products end-to-end.</p>
+      <ul class="work-bullets">
+        <li>Built official Dappster Studio website (React, Node, TypeScript)</li>
+        <li>Worked on AgentFlo.io and ChainAgent platforms</li>
+        <li>End-to-end features from UI to API integration</li>
+      </ul>
+    </div>
+    <div class="work-col-right">
+      <span class="work-tag">TypeScript</span>
+      <span class="work-tag">Node.js</span>
+      <span class="work-tag">React</span>
+      <span class="work-tag">Blockchain</span>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="work-row reveal">
+    <div class="work-col-left">
+      <p class="work-index">03 —</p>
+      <p class="work-period"><strong>Previous</strong>Aug 2023 — Oct 2024</p>
+    </div>
+    <div class="work-col-mid">
+      <h2 class="work-company">Poshmaal Technologies</h2>
+      <p class="work-role">Frontend Website Developer</p>
+      <p class="work-desc">Frontend and WordPress development for web, mobile, and digital marketing clients — custom sites, e-commerce, and LMS projects across varied industries.</p>
+      <ul class="work-bullets">
+        <li>Barclay Training LMS, buy7day, Integrated IT Training</li>
+        <li>Responsive WordPress and React-based builds</li>
+        <li>Client communication and Figma-to-code handoffs</li>
+      </ul>
+    </div>
+    <div class="work-col-right">
+      <span class="work-tag">WordPress</span>
+      <span class="work-tag">React</span>
+      <span class="work-tag">Figma</span>
+      <span class="work-tag">LMS</span>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="work-row reveal">
+    <div class="work-col-left">
+      <p class="work-index">04 —</p>
+      <p class="work-period"><strong>Freelance</strong>Jan 2022 — Jan 2024</p>
+    </div>
+    <div class="work-col-mid">
+      <h2 class="work-company">Fiverr</h2>
+      <p class="work-role">WordPress Developer &middot; Level 2 Seller</p>
+      <p class="work-desc">Freelance WordPress development for international clients — e-commerce, directories, travel, and corporate sites with consistent five-star delivery.</p>
+      <ul class="work-bullets">
+        <li>Find a Contractor, Experience Senegal, Francazona</li>
+        <li>Custom themes, plugins, and CSS customization</li>
+        <li>Maintained Level 2 seller rating with on-time delivery</li>
+      </ul>
+    </div>
+    <div class="work-col-right">
+      <span class="work-tag">WooCommerce</span>
+      <span class="work-tag">Custom Themes</span>
+      <span class="work-tag">Freelance</span>
+      <span class="work-tag">CSS</span>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="edu-section">
+    <div class="sec-label">
+      <span class="sec-label__text">Education</span>
+      <span class="sec-label__line"></span>
+      <span class="sec-label__count">01</span>
+    </div>
+
+    <div class="edu-row reveal">
+      <div class="edu-col-left">
+        <p class="edu-index">01 —</p>
+        <p class="edu-period"><strong>Degree</strong>2020 — 2024</p>
+      </div>
+      <div class="edu-col-mid">
+        <h2 class="edu-degree">B.S. Computer Science</h2>
+        <p class="edu-school">University of Management &amp; Technology (UMT)</p>
+        <p class="edu-desc">Computer Science graduate with strong foundations in OOP, DSA, algorithms, MySQL, and software engineering. Final year project: a full-stack Assessment Portal built in TypeScript.</p>
+        <ul class="edu-bullets">
+          <li>Assessment Portal FYP — TypeScript, full stack</li>
+          <li>Strong foundation in data structures and algorithms</li>
+          <li>LeetCode practice and continuous self-learning</li>
+        </ul>
+      </div>
+      <div class="edu-col-right">
+        <span class="edu-tag">Computer Science</span>
+        <span class="edu-tag">TypeScript</span>
+        <span class="edu-tag">DSA</span>
+        <span class="edu-tag">MySQL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOT -->
+  <div class="exp__foot">
+    <span class="exp__foot-line"></span>
+    <span class="exp__foot-text">Lahore, Pakistan</span>
+    <span class="exp__foot-line"></span>
+  </div>
+
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
