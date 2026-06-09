@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/lib/content/projects";
 import { blogPosts } from "@/lib/content/blog";
+import { services } from "@/lib/content/services";
 import { absoluteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const serviceRoutes = services.map((s) => ({
+    url: absoluteUrl(`/services/${s.id}`, siteConfig.url),
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
   const blogRoutes = blogPosts.map((p) => ({
     url: absoluteUrl(`/blog/${p.slug}`, siteConfig.url),
     lastModified: new Date(p.updatedAt ?? p.publishedAt),
@@ -28,5 +36,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...blogRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...blogRoutes];
 }

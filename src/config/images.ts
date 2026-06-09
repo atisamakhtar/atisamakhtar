@@ -7,6 +7,7 @@ export const images = {
 } as const;
 
 export const serviceImages = {
+  wordpress: "/portfolio/wordpress/baumeistercorp.webp",
   fullstack: "/images/services/atisam-service-fullstack.png",
   frontend: "/images/services/atisam-service-frontend.png",
   backend: "/images/services/atisam-service-backend.png",
