@@ -30,14 +30,15 @@ export function ProjectCard({ project, onPreview, priority = false }: ProjectCar
             priority={priority}
           />
 
-          {/* Default gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0" />
+          {/* Default gradient — must not block clicks */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0" />
 
-          {/* Hover overlay — agency-style */}
+          {/* Hover overlay — hidden from pointer events until visible */}
           <div
             className={cn(
-              "absolute inset-0 flex flex-col items-center justify-center gap-5 bg-black/75 px-6 text-center opacity-0 backdrop-blur-[2px] transition-all duration-500",
-              "group-hover:opacity-100 group-focus-visible:opacity-100",
+              "pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-5 bg-black/75 px-6 text-center opacity-0 backdrop-blur-[2px] transition-all duration-500",
+              "group-hover:pointer-events-auto group-hover:opacity-100",
+              "group-focus-within:pointer-events-auto group-focus-within:opacity-100",
             )}
           >
             <div className="space-y-2">

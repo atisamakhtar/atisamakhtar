@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogEnabled } from "@/config/features";
 import { siteConfig } from "@/config/site";
 import { projects } from "@/lib/content/projects";
 import { blogPosts } from "@/lib/content/blog";
@@ -6,7 +7,10 @@ import { services } from "@/lib/content/services";
 import { absoluteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/about", "/projects", "/blog", "/contact"].map(
+  const staticPaths = ["", "/about", "/projects", "/contact"];
+  if (blogEnabled) staticPaths.push("/blog");
+
+  const staticRoutes = staticPaths.map(
     (path) => ({
       url: absoluteUrl(path || "/", siteConfig.url),
       lastModified: new Date(),
@@ -29,12 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const blogRoutes = blogPosts.map((p) => ({
-    url: absoluteUrl(`/blog/${p.slug}`, siteConfig.url),
-    lastModified: new Date(p.updatedAt ?? p.publishedAt),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
+  const blogRoutes = blogEnabled
+    ? blogPosts.map((p) => ({
+        url: absoluteUrl(`/blog/${p.slug}`, siteConfig.url),
+        lastModified: new Date(p.updatedAt ?? p.publishedAt),
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      }))
+    : [];
 
   return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...blogRoutes];
 }

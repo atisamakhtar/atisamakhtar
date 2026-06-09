@@ -4,7 +4,7 @@ export function Projects() {
   return (
     <PortfolioShowcase
       id="portfolio"
-      variant="dark"
+      variant="light"
       featuredOnly
       showViewAllLink
       heading="Portfolio"

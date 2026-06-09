@@ -244,8 +244,10 @@ export const portfolioProjects: PortfolioProject[] = [
   ),
 ];
 
+export const HOME_FEATURED_PROJECT_LIMIT = 6;
+
 export function getFeaturedPortfolioProjects(): PortfolioProject[] {
-  return portfolioProjects.filter((p) => p.featured);
+  return portfolioProjects.filter((p) => p.featured).slice(0, HOME_FEATURED_PROJECT_LIMIT);
 }
 
 export function getPortfolioProjectById(id: string): PortfolioProject | undefined {

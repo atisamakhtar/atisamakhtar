@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { blogEnabled } from "@/config/features";
 import { blogPosts, getFeaturedPost } from "@/lib/content/blog";
 import { blogImages } from "@/config/images";
 import { formatDate } from "@/lib/utils";
@@ -12,6 +14,8 @@ function getCover(slug: string): string {
 }
 
 export default function BlogPage() {
+  if (!blogEnabled) notFound();
+
   const featured = getFeaturedPost();
   const rest = blogPosts.filter((p) => p.slug !== featured?.slug);
 

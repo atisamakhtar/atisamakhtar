@@ -7,7 +7,7 @@ export const siteConfig = {
   email: "atisam.akhter@gmail.com",
   phone: "+92 320 4672882",
   firstName: "Atisam",
-  heroTitle: "Full Stack",
+  heroTitle: "Full Stack Website",
   heroBio:
     "I build user-friendly, responsive web applications with React.js, Next.js, Node.js, Express, and MongoDB—and deliver WordPress sites for clients worldwide. Currently Website Developer at Xeven Solutions.",
   aboutBio:

@@ -8,9 +8,9 @@ import { Values } from "@/components/sections/Values";
 import { WorkProcess } from "@/components/sections/WorkProcess";
 import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
+import { blogEnabled } from "@/config/features";
 import { BlogPreview } from "@/components/sections/BlogPreview";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { CTABanner } from "@/components/sections/CTABanner";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function HomePage() {
@@ -26,9 +26,8 @@ export default function HomePage() {
       <WorkProcess />
       <Skills />
       <Experience />
-      <BlogPreview />
+      {blogEnabled && <BlogPreview />}
       <Testimonials />
-      <CTABanner />
       <ContactSection />
     </>
   );

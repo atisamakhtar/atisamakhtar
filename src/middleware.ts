@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { blogEnabled } from "@/config/features";
 
 const isDev = process.env.NODE_ENV === "development";
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (!blogEnabled && (pathname === "/blog" || pathname.startsWith("/blog/"))) {
+    return new NextResponse(null, { status: 404, statusText: "Not Found" });
+  }
+
   const response = NextResponse.next();
 
   // Strict CSP breaks Next.js dev (React Refresh uses eval) and client hydration.
@@ -41,7 +48,7 @@ export function middleware(request: NextRequest) {
     "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   );
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
-  response.headers.set("Cross-Origin-Resource-Policy", "same-origin");
+  // CORP on HTML only — do not apply to Next.js chunks (handled via matcher exclusion).
 
   if (request.nextUrl.pathname.startsWith("/api/")) {
     const ip = request.headers.get("x-forwarded-for") ?? "anon";

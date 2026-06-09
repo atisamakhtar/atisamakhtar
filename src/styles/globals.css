@@ -74,6 +74,50 @@
   .heading-accent {
     @apply text-center font-display text-3xl font-bold text-accent md:text-4xl;
   }
+
+  .hero-highlight-word {
+    @apply relative isolate inline-block text-accent;
+    text-shadow:
+      0 0 20px rgba(255, 45, 85, 0.55),
+      0 0 48px rgba(255, 45, 85, 0.2);
+  }
+
+  .hero-highlight-word::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    width: calc(100% + 1.25rem);
+    height: calc(100% + 0.65rem);
+    transform: translate(-50%, -50%);
+    border-radius: 0.35rem;
+    background: radial-gradient(
+      ellipse 90% 85% at 50% 50%,
+      rgba(74, 14, 14, 0.92) 0%,
+      rgba(58, 12, 18, 0.65) 42%,
+      transparent 78%
+    );
+    filter: blur(12px);
+    pointer-events: none;
+  }
+
+  .hero-highlight-word::after {
+    content: "";
+    position: absolute;
+    inset: 0.06em -0.28em;
+    z-index: -1;
+    border-radius: 0.28rem;
+    background: linear-gradient(
+      120deg,
+      rgba(62, 14, 22, 0.82) 0%,
+      rgba(42, 8, 14, 0.72) 100%
+    );
+    box-shadow:
+      0 0 28px rgba(255, 45, 85, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+  }
 }
 
 @layer utilities {

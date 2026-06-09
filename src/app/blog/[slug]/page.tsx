@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { blogEnabled } from "@/config/features";
 import { blogPosts, getPostBySlug } from "@/lib/content/blog";
 import { createMetadata } from "@/lib/seo/metadata";
 import {
@@ -18,6 +19,7 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
+  if (!blogEnabled) return [];
   return blogPosts.map((p) => ({ slug: p.slug }));
 }
 
@@ -39,6 +41,8 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  if (!blogEnabled) notFound();
+
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();

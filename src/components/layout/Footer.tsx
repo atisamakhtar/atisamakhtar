@@ -70,11 +70,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border-light pt-8 text-sm text-text-dark-muted md:flex-row">
+        <div className="mt-12 border-t border-border-light pt-8 text-center text-sm text-text-dark-muted">
           <p>
             © {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Designed with passion · Built with Next.js</p>
         </div>
       </div>
     </footer>

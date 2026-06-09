@@ -43,11 +43,12 @@ export function Hero() {
           <h1
             id="hero-heading"
             data-hero-line
-            className="mt-2 font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]"
+            className="mt-2 max-w-xl font-display text-[clamp(1.75rem,3.2vw,4rem)] font-extrabold uppercase leading-[1.18] tracking-[0.03em] text-white"
           >
-            {siteConfig.heroTitle ?? "Full Stack"}
-            <br />
-            <span className="text-white">Developer</span>
+            <span className="block">
+              Full Stack <span className="hero-highlight-word">Website</span>
+            </span>
+            <span className="mt-1 block">Developer</span>
           </h1>
           <p
             data-hero-line

@@ -1,3 +1,4 @@
+import { blogEnabled } from "@/config/features";
 import { siteConfig } from "@/config/site";
 import { allSkillNames } from "@/lib/content/skills";
 import type { BlogPost } from "@/types/blog";
@@ -23,20 +24,25 @@ export function buildPersonSchema(): JsonLdSchema {
 }
 
 export function buildWebSiteSchema(): JsonLdSchema {
-  return {
+  const schema: JsonLdSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    potentialAction: {
+  };
+
+  if (blogEnabled) {
+    schema.potentialAction = {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
         urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
-    },
-  };
+    };
+  }
+
+  return schema;
 }
 
 export function buildWebPageSchema(

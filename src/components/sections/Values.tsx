@@ -5,7 +5,10 @@ import { values } from "@/lib/content/values";
 
 export function Values() {
   return (
-    <section className="section-padding section-dark" aria-labelledby="values-heading">
+    <section
+      className="section-padding section-dark border-b border-white/10"
+      aria-labelledby="values-heading"
+    >
       <div className="container-custom">
         <h2 id="values-heading" className="text-center font-display text-3xl font-bold text-accent md:text-4xl">
           My Values

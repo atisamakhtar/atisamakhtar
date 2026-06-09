@@ -1,19 +1,14 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { portfolioProjects } from "@/data/projects";
+import { getFeaturedPortfolioProjects, portfolioProjects } from "@/data/projects";
 import { getPortfolioCategories } from "@/data/portfolio-categories";
 import type { PortfolioCategoryId, PortfolioProject } from "@/types/portfolio";
 import { PortfolioTabs } from "./PortfolioTabs";
 import { ProjectCard } from "./ProjectCard";
+import { PortfolioModal } from "./PortfolioModal";
 import { cn } from "@/lib/utils";
-
-const PortfolioModal = dynamic(
-  () => import("./PortfolioModal").then((m) => m.PortfolioModal),
-  { ssr: false },
-);
 
 interface PortfolioShowcaseProps {
   id?: string;
@@ -34,9 +29,7 @@ export function PortfolioShowcase({
   heading = "Portfolio",
   subheading = "Selected work across WordPress, Next.js, React, full stack, and e-commerce builds.",
 }: PortfolioShowcaseProps) {
-  const source = featuredOnly
-    ? portfolioProjects.filter((p) => p.featured)
-    : portfolioProjects;
+  const source = featuredOnly ? getFeaturedPortfolioProjects() : portfolioProjects;
 
   const categories = useMemo(
     () => getPortfolioCategories(source.map((p) => p.category)),
@@ -64,7 +57,8 @@ export function PortfolioShowcase({
       <section
         id={id}
         className={cn(
-          featuredOnly ? "section-padding section-dark" : "",
+          featuredOnly && "section-padding",
+          featuredOnly && (isDark ? "section-dark" : "section-light"),
           className,
         )}
         aria-labelledby="portfolio-showcase-heading"
