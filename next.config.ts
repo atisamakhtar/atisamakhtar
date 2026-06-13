@@ -27,6 +27,7 @@ const cacheOneYear = "public, max-age=31536000, immutable";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  devIndicators: false,
   productionBrowserSourceMaps: false,
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],

@@ -60,7 +60,7 @@ export default function RootLayout({
       className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
       suppressHydrationWarning
     >
-      <body>
+      <body suppressHydrationWarning>
         <JsonLd data={schemas} />
         <AppProviders>
           <ClientShell>{children}</ClientShell>

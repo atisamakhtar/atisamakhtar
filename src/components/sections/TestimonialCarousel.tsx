@@ -127,66 +127,76 @@ export function TestimonialCarousel({ items }: TestimonialCarouselProps) {
       </div>
 
       {/* Carousel */}
-      <div className="relative mx-auto mt-10 max-w-3xl md:mt-12">
-        {count > 1 && (
-          <>
+      <div className="mx-auto mt-10 max-w-3xl md:mt-12">
+        <div
+          className={cn(
+            "flex items-center gap-2 sm:gap-4",
+            count <= 1 && "justify-center",
+          )}
+        >
+          {count > 1 && (
             <button
               type="button"
               onClick={goPrev}
               aria-label="Previous review"
-              className="absolute -left-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border-light bg-white text-text-dark shadow-sm transition-colors hover:border-accent hover:text-accent sm:-left-14 sm:h-11 sm:w-11"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border-light bg-white text-text-dark shadow-sm transition-colors hover:border-accent hover:text-accent sm:h-11 sm:w-11"
             >
               <ChevronLeft size={20} aria-hidden="true" />
             </button>
+          )}
+
+          <div className="min-w-0 flex-1">
+            <AnimatePresence mode="wait">
+              <motion.article
+                key={current.id}
+                initial={reducedMotion ? false : { opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="rounded-2xl border border-border-light bg-white px-5 py-7 sm:px-8 sm:py-10 md:px-10"
+                aria-live="polite"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <Quote className="shrink-0 text-accent/80" size={36} aria-hidden="true" />
+                  {current.rating != null && <StarRating rating={current.rating} />}
+                </div>
+
+                <blockquote className="mt-6 text-base leading-relaxed text-text-dark sm:text-lg sm:leading-relaxed">
+                  &ldquo;{current.quote.trim()}&rdquo;
+                </blockquote>
+
+                <footer className="mt-8 flex items-center gap-4 border-t border-border-light pt-6">
+                  <ReviewerAvatar item={current} />
+                  <div className="min-w-0">
+                    <cite className="not-italic font-display text-base font-bold capitalize text-text-dark">
+                      {current.author}
+                    </cite>
+                    <p className="mt-0.5 text-sm text-text-dark-muted">
+                      {current.role}
+                      {current.company ? ` · ${current.company}` : ""}
+                    </p>
+                    {current.date && (
+                      <p className="mt-1 text-xs text-text-dark-muted">
+                        {formatReviewDate(current.date)}
+                      </p>
+                    )}
+                  </div>
+                </footer>
+              </motion.article>
+            </AnimatePresence>
+          </div>
+
+          {count > 1 && (
             <button
               type="button"
               onClick={goNext}
               aria-label="Next review"
-              className="absolute -right-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border-light bg-white text-text-dark shadow-sm transition-colors hover:border-accent hover:text-accent sm:-right-14 sm:h-11 sm:w-11"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border-light bg-white text-text-dark shadow-sm transition-colors hover:border-accent hover:text-accent sm:h-11 sm:w-11"
             >
               <ChevronRight size={20} aria-hidden="true" />
             </button>
-          </>
-        )}
-
-        <AnimatePresence mode="wait">
-          <motion.article
-            key={current.id}
-            initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="rounded-2xl border border-border-light bg-white px-6 py-8 sm:px-10 sm:py-10"
-            aria-live="polite"
-          >
-            <div className="flex items-start justify-between gap-4">
-              <Quote className="shrink-0 text-accent/80" size={36} aria-hidden="true" />
-              {current.rating != null && <StarRating rating={current.rating} />}
-            </div>
-
-            <blockquote className="mt-6 text-base leading-relaxed text-text-dark sm:text-lg sm:leading-relaxed">
-              &ldquo;{current.quote.trim()}&rdquo;
-            </blockquote>
-
-            <footer className="mt-8 flex items-center gap-4 border-t border-border-light pt-6">
-              <ReviewerAvatar item={current} />
-              <div className="min-w-0">
-                <cite className="not-italic font-display text-base font-bold capitalize text-text-dark">
-                  {current.author}
-                </cite>
-                <p className="mt-0.5 text-sm text-text-dark-muted">
-                  {current.role}
-                  {current.company ? ` · ${current.company}` : ""}
-                </p>
-                {current.date && (
-                  <p className="mt-1 text-xs text-text-dark-muted">
-                    {formatReviewDate(current.date)}
-                  </p>
-                )}
-              </div>
-            </footer>
-          </motion.article>
-        </AnimatePresence>
+          )}
+        </div>
       </div>
 
       {/* Pagination */}
