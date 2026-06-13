@@ -26,14 +26,14 @@ export function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden bg-bg-dark pt-[var(--header-total)]"
+      className="relative overflow-hidden bg-bg-dark pt-[var(--header-total)] lg:min-h-screen"
       aria-labelledby="hero-heading"
     >
       <BlobShapes variant="hero" />
 
-      <div className="container-custom relative z-10 grid min-h-[calc(100vh-var(--header-total))] items-center gap-8 py-10 lg:grid-cols-2 lg:gap-4">
+      <div className="container-custom relative z-10 grid items-center gap-8 py-16 sm:py-20 lg:min-h-[calc(100vh-var(--header-total))] lg:grid-cols-2 lg:gap-4 lg:py-10">
         {/* Left — typography */}
-        <div className="order-2 lg:order-1 lg:pr-8">
+        <div className="lg:pr-8">
           <p
             data-hero-line
             className="text-lg font-medium text-white/90 sm:text-xl md:text-2xl"
@@ -67,10 +67,10 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right — portrait, vertically centered, facing toward copy (left) */}
+        {/* Right — portrait (desktop only) */}
         <div
           data-hero-line
-          className="relative order-1 flex w-full max-w-lg items-center justify-center self-center lg:order-2 lg:max-w-none lg:justify-end lg:-translate-y-8"
+          className="relative hidden w-full max-w-lg items-center justify-center self-center lg:flex lg:max-w-none lg:justify-end lg:-translate-y-8"
         >
           <div className="relative aspect-[3/4] h-[min(72vh,560px)] w-full max-w-[380px] sm:max-w-[420px] lg:h-[min(78vh,620px)] lg:max-w-[500px]">
             <Image

@@ -130,12 +130,12 @@ export function BlobShapes({ variant = "hero", className }: BlobShapesProps) {
   if (variant === "contact") {
     return (
       <div
-        className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
+        className={cn("pointer-events-none absolute inset-0 z-0 overflow-hidden", className)}
         aria-hidden="true"
       >
         <svg
           className={cn(
-            "blob-float absolute -left-[12%] top-[8%] h-[55%] w-[42%] text-accent opacity-50",
+            "blob-float absolute -left-[18%] top-[55%] h-[42%] w-[38%] text-accent opacity-35 md:-left-[12%] md:top-[8%] md:h-[55%] md:w-[42%] md:opacity-50",
             !reducedMotion && "blob-morph-slow",
           )}
           viewBox="0 0 400 500"
@@ -145,7 +145,7 @@ export function BlobShapes({ variant = "hero", className }: BlobShapesProps) {
         </svg>
         <svg
           className={cn(
-            "blob-float-delayed absolute -right-[10%] bottom-[5%] h-[50%] w-[38%] text-accent opacity-40",
+            "blob-float-delayed absolute -right-[14%] bottom-[0%] h-[44%] w-[36%] text-accent opacity-30 md:-right-[10%] md:bottom-[5%] md:h-[50%] md:w-[38%] md:opacity-40",
             !reducedMotion && "blob-morph",
           )}
           viewBox="0 0 350 350"
@@ -155,7 +155,7 @@ export function BlobShapes({ variant = "hero", className }: BlobShapesProps) {
         </svg>
         <svg
           className={cn(
-            "absolute right-[18%] top-[22%] h-24 w-24 text-accent/25",
+            "absolute right-[4%] top-[62%] h-14 w-14 text-accent/20 md:right-[18%] md:top-[28%] md:h-24 md:w-24 md:text-accent/25",
             !reducedMotion && "blob-float",
           )}
           viewBox="0 0 100 100"
@@ -165,7 +165,7 @@ export function BlobShapes({ variant = "hero", className }: BlobShapesProps) {
         </svg>
         <svg
           className={cn(
-            "absolute bottom-[28%] left-[20%] h-16 w-16 text-accent/20",
+            "absolute bottom-[12%] left-[6%] h-12 w-12 text-accent/15 md:bottom-[28%] md:left-[20%] md:h-16 md:w-16 md:text-accent/20",
             !reducedMotion && "blob-float-delayed",
           )}
           viewBox="0 0 100 100"

@@ -6,17 +6,11 @@ export function Testimonials() {
 
   return (
     <section
+      id="testimonials"
       className="section-padding section-light"
       aria-labelledby="testimonials-heading"
     >
       <div className="container-custom">
-        <h2 id="testimonials-heading" className="heading-accent">
-          Testimonials
-        </h2>
-        <p className="mx-auto mt-3 max-w-lg text-center text-sm text-text-dark-muted">
-          What clients say about working with me.
-        </p>
-
         <TestimonialCarousel items={testimonials} />
       </div>
     </section>

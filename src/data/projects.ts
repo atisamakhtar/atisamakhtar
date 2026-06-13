@@ -173,6 +173,19 @@ export const portfolioProjects: PortfolioProject[] = [
       websiteUrl: "https://thevastreach.com",
     },
   ),
+  pageProject(
+    "elite-financial-consultants",
+    "Elite Financial Consultants",
+    "wordpress",
+    "/portfolio/wordpress/elitefinancialconsultants.webp",
+    {
+      description:
+        "Pakistan-based financial consultancy website for bookkeeping, tax services, business registration, and corporate compliance across Pakistan, UAE, USA, UK, and Canada.",
+      technologies: ["WordPress", "Elementor", "Contact Forms", "Responsive Design"],
+      projectType: "Financial Services",
+      websiteUrl: "https://elitefinancialconsultants.com",
+    },
+  ),
 
   // ── Next.js ────────────────────────────────────────────────
   pageProject(
@@ -232,7 +245,7 @@ export const portfolioProjects: PortfolioProject[] = [
     "leo-wholesale",
     "Leo Wholesale",
     "ecommerce",
-    "/portfolio/wordpress/leowholesale.webp",
+    "/portfolio/ecommerce/leowholesale.webp",
     {
       description:
         "UK wholesale e-commerce store for smartphones, laptops, smartwatches, and home appliances with full WooCommerce shopping flows.",
