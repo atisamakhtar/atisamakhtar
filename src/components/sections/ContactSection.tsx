@@ -31,11 +31,11 @@ export function ContactSection() {
           </p>
           <Link
             href="/contact"
-            className="btn-primary relative mt-8 inline-flex items-center gap-2 shadow-glow"
+            className="btn-primary relative mx-auto mt-8 inline-flex max-w-full items-center gap-1.5 px-5 py-3 text-xs font-bold normal-case tracking-normal shadow-glow sm:gap-2 sm:px-6 sm:py-3.5 sm:text-sm"
           >
-            <Mail size={18} aria-hidden="true" />
-            {siteConfig.email}
-            <ArrowRight size={18} aria-hidden="true" />
+            <Mail size={16} className="shrink-0" aria-hidden="true" />
+            <span className="leading-snug">{siteConfig.email}</span>
+            <ArrowRight size={16} className="shrink-0" aria-hidden="true" />
           </Link>
           <SocialIcons className="relative mt-8 justify-center" size={24} variant="dark" />
         </div>

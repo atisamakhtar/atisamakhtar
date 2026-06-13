@@ -38,7 +38,7 @@ export function Hero() {
             data-hero-line
             className="text-lg font-medium text-white/90 sm:text-xl md:text-2xl"
           >
-            I&apos;m {siteConfig.firstName}
+            I&apos;m {siteConfig.name}
           </p>
           <h1
             id="hero-heading"

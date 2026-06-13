@@ -66,7 +66,7 @@ export function Skills() {
               Skills
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/75 md:text-base">
-              I&apos;m {siteConfig.firstName} — a professional {siteConfig.jobTitle} with{" "}
+              I&apos;m {siteConfig.name} — a professional {siteConfig.jobTitle} with{" "}
               {siteConfig.stats?.find((s) => s.label.includes("Experience"))?.value ?? "1.5+"}{" "}
               years of experience building modern web applications, WordPress sites, and
               production-ready MERN stack products for clients worldwide.

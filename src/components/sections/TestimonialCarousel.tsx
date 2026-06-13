@@ -197,7 +197,10 @@ export function TestimonialCarousel({ items }: TestimonialCarouselProps) {
             <span className="mx-1.5 text-text-dark-muted/60">/</span>
             <span>{count}</span>
           </p>
-          <nav aria-label="Review pagination" className="flex max-w-full items-center gap-1.5 overflow-x-auto px-2 pb-1">
+          <nav
+            aria-label="Review pagination"
+            className="hide-scrollbar flex max-w-full items-center gap-1.5 overflow-x-auto px-2"
+          >
             {items.map((item, index) => (
               <button
                 key={item.id}
